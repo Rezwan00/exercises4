@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 
@@ -12,7 +13,7 @@ const blogSchema = mongoose.Schema({
 
 const Blog = mongoose.model('Blog', blogSchema)
 
-const mongoUrl = 'mongodb://localhost/bloglist'
+const mongoUrl = 'mongodb+srv://fullstack:69PCAPlyANNTFnxf@cluster0.3yzf4z3.mongodb.net/?appName=Cluster0'
 mongoose.connect(mongoUrl, { family: 4 })
 
 app.use(express.json())
@@ -31,7 +32,7 @@ app.post('/api/blogs', (request, response) => {
   })
 })
 
-const PORT = 3003
+const PORT = process.env.PORT || 3003
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
